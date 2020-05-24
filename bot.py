@@ -1,7 +1,8 @@
 '''
-Created on May 20, 2020
+TurnipReminder:
 
-@author: noemi
+Twitter bot script that sends Twitter status updates via tweepy (Twitter API for Python) reminding
+    users to check on Animal Crossing: New Horizon characters and turnip prices. 
 '''
 
 from datetime import datetime
@@ -41,6 +42,10 @@ def updateTweet():
     soon_sign_emoji = u'\U0001F51C'
     double_exclamation_emoji = u'\U0000FE0F'
     cross_mark_emoji = u'\U0000274C'
+    
+    auth = tweepy.OAuthHandler(credentials.consumer_key, credentials.consumer_secret)
+    auth.set_access_token(credentials.access_token, credentials.access_token_secret)
+    api = tweepy.API(auth)
     
     
     if (todays_weekday == 6): # If it's Sunday
@@ -168,16 +173,58 @@ def updateTweet():
             api.update_status(money_emoji + cross_mark_emoji + 
                 ": It's 10 PM, and Nook's Cranny has closed for the night. Turnip prices will update tomorrow at 8am!")
     elif (todays_weekday == 4): # If it's Friday
-        pass
+        if (current_datetime.hour == 8 and current_datetime.minute == 0 and current_datetime.second == 0):
+            # If it's 8am (open, new morning price)
+            api.update_status(money_emoji + 
+                ": Good morning! It's Friday, 8 AM. Don't forget to check on your morning turnip prices!")
+        
+        elif (current_datetime.hour == 11 and current_datetime.minute == 0 and current_datetime.second == 0):
+            # elif 11am (1 hr before new noon price)
+            api.update_status(money_emoji + warning_emoji + 
+                ": It's 11 AM. Your morning turnip prices end in one hour!!")
+        
+        elif (current_datetime.hour == 12 and current_datetime.minute == 0 and current_datetime.second == 0):
+            # elif 12pm (new noon price)
+            api.update_status(money_emoji + double_exclamation_emoji + 
+                ": It's 12 PM. Check on your afternoon turnip prices before 10 PM!")
+        
+        elif (current_datetime.hour == 21 and current_datetime.minute == 0 and current_datetime.second == 0):
+            # elif 9pm (1 hr before closing)
+            api.update_status(money_emoji + double_exclamation_emoji + 
+                ": It's 9 PM, one hour before Nook's Cranny closes. Check on your afternoon turnip prices before 10 PM!")
+        
+        elif (current_datetime.hour == 22 and current_datetime.minute == 0 and current_datetime.second == 0):
+            # elif 10pm (closed)
+            api.update_status(money_emoji + cross_mark_emoji + 
+                ": It's 10 PM, and Nook's Cranny has closed for the night. Tomorrow is the LAST DAY to sell your turnips if you haven't!")
     elif (todays_weekday == 5): # If it's Saturday 
-        pass
-    
+        if (current_datetime.hour == 8 and current_datetime.minute == 0 and current_datetime.second == 0):
+            # If it's 8am (open, new morning price)
+            api.update_status(money_emoji + 
+                ": Good morning! It's Friday, 8 AM. Make sure to sell your turnips today!!!")
+        
+        elif (current_datetime.hour == 11 and current_datetime.minute == 0 and current_datetime.second == 0):
+            # elif 11am (1 hr before new noon price)
+            api.update_status(money_emoji + warning_emoji + 
+                ": It's 11 AM. Your morning turnip prices end in one hour!!")
+        
+        elif (current_datetime.hour == 12 and current_datetime.minute == 0 and current_datetime.second == 0):
+            # elif 12pm (new noon price)
+            api.update_status(money_emoji + double_exclamation_emoji + 
+                ": It's 12 PM. Check on your last afternoon turnip prices of the week before 10 PM!")
+        
+        elif (current_datetime.hour == 21 and current_datetime.minute == 0 and current_datetime.second == 0):
+            # elif 9pm (1 hr before closing)
+            api.update_status(money_emoji + double_exclamation_emoji + 
+                ": It's 9 PM, one hour before Nook's Cranny closes. DON'T FORGET TO SELL YOUR TURNIPS!!!")
+        
+        elif (current_datetime.hour == 22 and current_datetime.minute == 0 and current_datetime.second == 0):
+            # elif 10pm (closed)
+            api.update_status(money_emoji + cross_mark_emoji + 
+                ": It's 10 PM, and Nook's Cranny has closed for the night. Daisy Mae will be selling turnips tomorrow.")
     
     
 if __name__ == '__main__':
     
-    auth = tweepy.OAuthHandler(credentials.consumer_key, credentials.consumer_secret)
-    auth.set_access_token(credentials.access_token, credentials.access_token_secret)
-    api = tweepy.API(auth)
-    
-    #api.update_status("test tweet")
+    while True:
+        updateTweet()
