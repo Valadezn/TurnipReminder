@@ -14,7 +14,7 @@ lxml==4.2.5
 mccabe==0.6.1
 mysql-connector-python==8.0.15
 mysqlclient==1.4.2
-nltk==3.4
+nltk==3.4.5
 oauthlib==3.1.0
 parse==1.15.0
 protobuf==3.6.1
