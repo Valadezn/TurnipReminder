@@ -50,8 +50,8 @@ def updateTweet():
     ACCESS_KEY = environ['ACCESS_KEY']
     ACCESS_SECRET = environ['ACCESS_SECRET']
     
-    if (current_datetime.second == 0):
-        print("Current day: {} --- Current time: {}:{}:{}".format(todays_weekday, current_datetime.hour, current_datetime.minute, current_datetime.second))
+    if (current_datetime.second == 0 and current_datetime.microsecond):
+        print("bot.py: Current day: {} --- Current time: {}:{}:{}".format(todays_weekday, current_datetime.hour, current_datetime.minute, current_datetime.second))
         sys.stdout.flush()
     
     
@@ -398,7 +398,7 @@ def updateTweet():
             sys.stdout.flush()
     
 if __name__ == '__main__':
-    print("Starting bot.py")
+    print("Bot.py: Starting bot.py")
     sys.stdout.flush()
     while True:
         updateTweet()
