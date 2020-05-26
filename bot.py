@@ -9,7 +9,8 @@ from datetime import datetime
 from os import environ
 import tweepy, sys, time
 
-
+# TODO: Convert all times into GMT
+# TODO: edit logic to include tweet status retrieval from text file
 
 def updateTweet():
     """
