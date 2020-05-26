@@ -7,7 +7,7 @@ Twitter bot script that sends Twitter status updates via tweepy (Twitter API for
 
 from datetime import datetime
 from os import environ
-import tweepy, sys
+import tweepy, sys, time
 
 
 
@@ -160,6 +160,7 @@ def updateTweet():
                 ": It's 11 AM. Your morning turnip prices end in one hour!!")
             print("sending tweet. tuesday 11am")
             sys.stdout.flush()
+            time.sleep(5)
         
         elif (current_datetime.hour == 12 and current_datetime.minute == 0 and current_datetime.second == 0):
             # elif 12pm (new noon price)
