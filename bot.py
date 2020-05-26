@@ -50,6 +50,10 @@ def updateTweet():
     ACCESS_KEY = environ['ACCESS_KEY']
     ACCESS_SECRET = environ['ACCESS_SECRET']
     
+    if (current_datetime.second == 0):
+        print("Current day: {} --- Current time: {}:{}:{}".format(todays_weekday, current_datetime.hour, current_datetime.minute, current_datetime.second))
+        sys.stdout.flush()
+    
     
     if (todays_weekday == 6): # If it's Sunday
         if (current_datetime.hour == 5 and current_datetime.minute == 0 and current_datetime.second == 0):
