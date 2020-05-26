@@ -50,7 +50,7 @@ def updateTweet():
     ACCESS_KEY = environ['ACCESS_KEY']
     ACCESS_SECRET = environ['ACCESS_SECRET']
     
-    if (current_datetime.second == 0 and current_datetime.microsecond):
+    if (current_datetime.second == 0 and current_datetime.microsecond == 0):
         print("bot.py: Current day: {} --- Current time: {}:{}:{}:{}".format(todays_weekday, current_datetime.hour, current_datetime.minute, current_datetime.second, current_datetime.microsecond))
         sys.stdout.flush()
     
@@ -151,7 +151,7 @@ def updateTweet():
             print("sending tweet. tuesday 8am")
             sys.stdout.flush()
             
-        elif (current_datetime.hour == 11 and current_datetime.minute == 0 and current_datetime.second == 0):
+        elif (current_datetime.hour == 11 and current_datetime.minute == 0 and current_datetime.second == 0 and current_datetime.microsecond == 0):
             # elif 11am (1 hr before new noon price)
             auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
             auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
