@@ -51,7 +51,7 @@ def updateTweet():
     ACCESS_SECRET = environ['ACCESS_SECRET']
     
     if (current_datetime.second == 0 and current_datetime.microsecond):
-        print("bot.py: Current day: {} --- Current time: {}:{}:{}".format(todays_weekday, current_datetime.hour, current_datetime.minute, current_datetime.second))
+        print("bot.py: Current day: {} --- Current time: {}:{}:{}:{}".format(todays_weekday, current_datetime.hour, current_datetime.minute, current_datetime.second, current_datetime.microsecond))
         sys.stdout.flush()
     
     
@@ -140,7 +140,7 @@ def updateTweet():
             print("sending tweet. monday 10pm")
             sys.stdout.flush()
 
-    elif (todays_weekday == 1): # If it's Tuesday
+    elif (todays_weekday == 1): # If it's Tuesday GMT (Mon
         if (current_datetime.hour == 8 and current_datetime.minute == 0 and current_datetime.second == 0):
             # If it's 8am (open, new morning price)
             auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
@@ -181,8 +181,8 @@ def updateTweet():
             print("sending tweet. tuesday 9pm")
             sys.stdout.flush()
         
-        elif (current_datetime.hour == 22 and current_datetime.minute == 0 and current_datetime.second == 0):
-            # elif 10pm (closed)
+        elif (current_datetime.hour == 5 and current_datetime.minute == 0 and current_datetime.second == 0):
+            # elif 10pm (closed) (Monday 10pm PST -> Tuesday 5am GMT)
             auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
             auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
             api = tweepy.API(auth)
