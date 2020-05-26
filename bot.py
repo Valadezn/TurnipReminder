@@ -394,6 +394,7 @@ def updateTweet():
             sys.stdout.flush()
     
 if __name__ == '__main__':
-    
+    print("Starting bot.py")
+    sys.stdout.flush()
     while True:
         updateTweet()
