@@ -7,7 +7,7 @@ Twitter bot script that sends Twitter status updates via tweepy (Twitter API for
 
 from datetime import datetime
 from os import environ
-import tweepy, sys, time
+import pytz, sys, time, tweepy
 
 # TODO: Convert all times into GMT
 # TODO: edit logic to include tweet status retrieval from text file
@@ -34,7 +34,11 @@ def updateTweet():
     None
     
     """
-    current_datetime = datetime.now()
+    #current_datetime = datetime.now()
+    #todays_weekday = current_datetime.today().weekday() 
+    
+    pst_timezone = pytz.timezone('America/Los_Angeles')
+    current_datetime = datetime.now(pst_timezone)
     todays_weekday = current_datetime.today().weekday() 
     
     boar_emoji = u"\U0001F417"
