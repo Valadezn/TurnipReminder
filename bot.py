@@ -43,7 +43,7 @@ def updateTweet():
 #     todays_weekday_str = current_datetime.today().strftime('%A')
     
     actual_time = current_datetime.astimezone(pst_timezone)
-    todays_weekday = actual_time.today().weekend()
+    todays_weekday = actual_time.today().weekday()
     todays_weekday_str = actual_time.today().strftime('%A')
     
     boar_emoji = u"\U0001F417"
