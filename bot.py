@@ -40,6 +40,7 @@ def updateTweet():
     pst_timezone = pytz.timezone('America/Los_Angeles')
     current_datetime = datetime.now(pst_timezone)
     todays_weekday = current_datetime.today().weekday() 
+    todays_weekday_str = current_datetime.today().strftime('%A')
     
     boar_emoji = u"\U0001F417"
     money_emoji = u'\U0001F4B0'
@@ -56,7 +57,7 @@ def updateTweet():
     ACCESS_SECRET = environ['ACCESS_SECRET']
     
     if (current_datetime.second == 0 and current_datetime.microsecond == 0):
-        print("bot.py: Current day: {} --- Current time: {}:{}:{}:{}".format(todays_weekday, current_datetime.hour, current_datetime.minute, 
+        print("bot.py: Current day: {}, {} --- Current time: {}:{}:{}:{}".format(todays_weekday, todays_weekday_str, current_datetime.hour, current_datetime.minute, 
                                                                              current_datetime.second, current_datetime.microsecond))
         sys.stdout.flush()
         logging.info("Current day: {} --- Current time: {}:{}:{}:{}".format(todays_weekday, current_datetime.hour, current_datetime.minute, 
