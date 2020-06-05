@@ -60,7 +60,7 @@ def updateTweet():
         print("bot.py: Current day: {}, {} --- Current time: {}:{}:{}:{}".format(todays_weekday, todays_weekday_str, current_datetime.hour, current_datetime.minute, 
                                                                              current_datetime.second, current_datetime.microsecond))
         sys.stdout.flush()
-        logging.info("Current day: {} --- Current time: {}:{}:{}:{}".format(todays_weekday, current_datetime.hour, current_datetime.minute, 
+        logging.info("Current day: {}, {} --- Current time: {}:{}:{}:{}".format(todays_weekday, todays_weekday_str, current_datetime.hour, current_datetime.minute, 
                                                                             current_datetime.second, current_datetime.microsecond))
     
     
@@ -98,6 +98,7 @@ def updateTweet():
                 ": It's Sunday, 12 PM. Daisy Mae is gone for the week!\nTime to check on your turnip prices tomorrow or buy turnip next Sunday.")
             print("sending tweet. sunday 12pm")
             sys.stdout.flush()
+            time.sleep(5)
             
     elif (todays_weekday == 0): # If it's Monday
         if (current_datetime.hour == 8 and current_datetime.minute == 0 and current_datetime.second == 0):
@@ -109,6 +110,7 @@ def updateTweet():
                 ": Good morning! It's Monday, 8 AM. Don't forget to check on your morning turnip prices!")
             print("sending tweet. monday 8am")
             sys.stdout.flush()
+            time.sleep(5)
             
             
         elif (current_datetime.hour == 11 and current_datetime.minute == 0 and current_datetime.second == 0):
@@ -120,6 +122,7 @@ def updateTweet():
                 ": It's 11 AM. Your morning turnip prices end in one hour!!")
             print("sending tweet. monday 11am")
             sys.stdout.flush()
+            time.sleep(5)
         
         elif (current_datetime.hour == 12 and current_datetime.minute == 0 and current_datetime.second == 0):
             # elif 12pm (new noon price)
@@ -130,6 +133,7 @@ def updateTweet():
                 ": It's 12 PM. Check on your afternoon turnip prices before 10 PM!")
             print("sending tweet. monday 12pm")
             sys.stdout.flush()
+            time.sleep(5)
         
         elif (current_datetime.hour == 21 and current_datetime.minute == 0 and current_datetime.second == 0):
             # elif 9pm (1 hr before closing)
@@ -140,6 +144,7 @@ def updateTweet():
                 ": It's 9 PM, one hour before Nook's Cranny closes. Check on your afternoon turnip prices before 10 PM!")
             print("sending tweet. monday 9pm")
             sys.stdout.flush()
+            time.sleep(5)
             
         elif (current_datetime.hour == 22 and current_datetime.minute == 0 and current_datetime.second == 0):
             # elif 10pm (closed)
@@ -150,6 +155,7 @@ def updateTweet():
                 ": It's 10 PM, and Nook's Cranny has closed for the night. Turnip prices will update tomorrow at 8am!")
             print("sending tweet. monday 10pm")
             sys.stdout.flush()
+            time.sleep(5)
 
     elif (todays_weekday == 1): # If it's Tuesday GMT (Mon
         if (current_datetime.hour == 8 and current_datetime.minute == 0 and current_datetime.second == 0):
@@ -161,6 +167,7 @@ def updateTweet():
                 ": Good morning! It's Tuesday, 8 AM. Don't forget to check on your morning turnip prices!")
             print("sending tweet. tuesday 8am")
             sys.stdout.flush()
+            time.sleep(5)
             
         elif (current_datetime.hour == 11 and current_datetime.minute == 0 and current_datetime.second == 0 and current_datetime.microsecond == 0):
             # elif 11am (1 hr before new noon price)
