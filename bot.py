@@ -39,8 +39,12 @@ def updateTweet():
     
     pst_timezone = pytz.timezone('America/Los_Angeles')
     current_datetime = datetime.now(pst_timezone)
-    todays_weekday = current_datetime.today().weekday() 
-    todays_weekday_str = current_datetime.today().strftime('%A')
+#     todays_weekday = current_datetime.today().weekday() 
+#     todays_weekday_str = current_datetime.today().strftime('%A')
+    
+    actual_time = current_datetime.astimezone(pst_timezone)
+    todays_weekday = actual_time.today().weekend()
+    todays_weekday_str = actual_time.today().strftime('%A')
     
     boar_emoji = u"\U0001F417"
     money_emoji = u'\U0001F4B0'
