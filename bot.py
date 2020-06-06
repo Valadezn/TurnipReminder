@@ -43,12 +43,12 @@ def updateTweet():
 #     todays_weekday_str = current_datetime.today().strftime('%A')
     
     actual_time = current_datetime.astimezone(pst_timezone)
-    todays_weekday = actual_time.today().weekday()
-    todays_weekday_str = actual_time.today().strftime('%A')
+#     todays_weekday = actual_time.today().weekday()
+#     todays_weekday_str = actual_time.today().strftime('%A')
     
     now = datetime.now(pst_timezone) # you could pass `timezone` object here
-#     weekday = now.weekday() 
-#     print(weekday, calendar.day_name[weekday])
+    todays_weekday = now.weekday() 
+    todays_weekday_str = calendar.day_name[todays_weekday]
     
     boar_emoji = u"\U0001F417"
     money_emoji = u'\U0001F4B0'
@@ -66,7 +66,8 @@ def updateTweet():
     
     # current_datetime.second == 0 and 
     if (current_datetime.microsecond == 0):
-        print("bot.py: Current day: {}, {} --- Current time: {}".format(todays_weekday, todays_weekday_str, current_datetime.today()))
+        print("bot.py: Current day: {}, {} --- Current time: {}:{}:{}:{}".format(todays_weekday, todays_weekday_str, current_datetime.hour, current_datetime.minute, 
+                                                                            current_datetime.second, current_datetime.microsecond))
         sys.stdout.flush()
         logging.info("Current day: {}, {} --- Current time: {}:{}:{}:{}".format(todays_weekday, todays_weekday_str, current_datetime.hour, current_datetime.minute, 
                                                                             current_datetime.second, current_datetime.microsecond))
