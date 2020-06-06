@@ -47,8 +47,8 @@ def updateTweet():
     todays_weekday_str = actual_time.today().strftime('%A')
     
     now = datetime.now(pst_timezone) # you could pass `timezone` object here
-    weekday = now.weekday() 
-    print(weekday, calendar.day_name[weekday])
+#     weekday = now.weekday() 
+#     print(weekday, calendar.day_name[weekday])
     
     boar_emoji = u"\U0001F417"
     money_emoji = u'\U0001F4B0'
